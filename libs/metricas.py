@@ -3,8 +3,6 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import cross_validate
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 
 def calculaMetricasCV(model,X, y):  
@@ -24,13 +22,4 @@ def matrixConfusa(y_test,y_predicted, classes):
     matrix = pd.DataFrame(conf_mat,columns=classes)
     matrix.index = classes
     return matrix
-
-def heatmap_matriz_confusa(y_test,y_predicted, classes):
-    matriz = matrixConfusa(y_test,y_predicted, classes)
-    fig, ax = plt.subplots(figsize=(18,12))
-    sns.heatmap(matriz, annot=True, fmt='d', 
-            xticklabels=classes, yticklabels=classes)
-    plt.ylabel('Atual')
-    plt.xlabel('Previsto')
-    plt.show()
 
